@@ -1,0 +1,6 @@
+version: '2'
+services:
+  mosquitto:
+      image: "caapimcollab/mosquitto-broker"
+      expose:
+        - "1883"

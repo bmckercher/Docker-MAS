@@ -1,0 +1,6 @@
+version: '2'
+services:
+  developer-console:
+    image: caapimcollab/mobile-developer-console
+    ports:
+      - 443:443

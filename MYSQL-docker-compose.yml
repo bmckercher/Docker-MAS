@@ -1,0 +1,16 @@
+version: '2'
+services:
+  mysqldb:
+    image: mysql:5.5
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=db_admin
+      - MYSQL_PASSWORD
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql/scripts/startup/:/docker-entrypoint-initdb.d/
+      - ./sql/config/my.cnf:/etc/mysql/conf.d/my.cnf
+    expose:
+      - "3306"
+volumes:
+  mysql-data:

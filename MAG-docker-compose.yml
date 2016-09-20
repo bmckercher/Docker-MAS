@@ -1,0 +1,16 @@
+version: '2'
+services:
+  mag:
+    extends:
+      file: OTK-docker-compose.yml
+      service: otk
+    image: ${IMAGE}
+    hostname: ${MAG_HOSTNAME}
+    environment:
+      - BUNDLE_TEMPLATE_MAG_DATABASE_HOST
+      - BUNDLE_TEMPLATE_MAG_DATABASE_PORT
+      - BUNDLE_TEMPLATE_MAG_DATABASE_USER
+      - BUNDLE_TEMPLATE_MAG_DATABASE_PASSWORD
+      - BUNDLE_TEMPLATE_MAG_DATABASE_NAME
+      - BUNDLE_TEMPLATE_MAG_DATABASE_TYPE
+      - BUNDLE_TEMPLATE_MAG_DATABASE_MYSQL_ENABLED
