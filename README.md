@@ -100,6 +100,36 @@ export MAS_HOSTNAME="my-mas.example.com"
 |ADD_TEST_USERS_GROUPS|true|Setting this to **true**, users and groups are added to the database.|
 |IMAGE_TAG|latest|The image tag used.|
 
+# Test Data
+You can install test data by setting one of the ADD_TEST environment variables to true. Test apps can be installed by setting **ADD_TEST_CLIENTS** to **true**. Test users and groups can be installed by setting **ADD_TEST_USERS_GROUPS** to **true** (this is the default). 
+
+## Test Users and Groups
+The default user that is always available is the **admin** user, it's password is **password**. Setting **ADD_TEST_USERS_GROUPS** to **true** will add the following users:
+
+|User Name|Login|Password|
+|---|---|---|
+|Aaron Rose|arose|StRonG5^)|
+|Ana Steeves|asteeves|StRonG5^)|
+|Andy Diaz|adiaz|StRonG5^)|
+|Brayden White|bwhite|StRonG5^)|
+|Christina Griffin|cgriffin|StRonG5^)|
+|Gilbert Rice|grice|StRonG5^)|
+|Hazel Jones|hjones|StRonG5^)|
+|Jamie Torres|jtorres|StRonG5^)|
+|Tammy Richards|trichards|StRonG5^)|
+|Vicki Peters|vpeters|StRonG5^)|
+|Zachary Shelton|zshelton|StRonG5^)|
+
+The following groups are also created:
+
+|Group Name|Members|
+|---|---|
+|Marketing|arose, hjones, zshelton|
+|Engineering|adiaz, bwhite, trichards|
+|Legal|cgriffin, vpeters, asteeves|
+|Company X|adiaz, bwhite, cgriffin, grice, hjones, jtorres, trichards, vpeters, zshelton, arose, asteeves|
+
+
 ## License
 
 Copyright (c) 2016 CA. All rights reserved.
