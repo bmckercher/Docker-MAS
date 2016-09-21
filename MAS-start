@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+#
+#  Copyright (c) 2016 CA. All rights reserved.
+#
+#  This software may be modified and distributed under the terms
+#  of the MIT license. See the LICENSE file for details.
+#
+
 . MAS-vars && . MAG-vars && . OTK-vars
 
 compose_files=( MAS-docker-compose.yml MAS-links-docker-compose.yml MYSQL-docker-compose.yml MOSQUITTO-docker-compose.yml DEV-CONSOLE-docker-compose.yml )

@@ -12,7 +12,7 @@ CA Mobile App Services (MAS) is a set of tightly integrated mobile services for 
 
 CA Mobile API Gateway (MAG) provides enterprises with a secure mobile backend that integrates systems and allows control over which users, devices and applications can access your APIs. The gateway enables developers to leverage standards for API security such as (OAuth2, OpenID Connect, PKI) through client SDKs for Android, iOS and Apache Cordova.
 
-You can find more information about these at [http://mas.ca.com/](http://mas.ca.com/)
+You can find more information about these at [http://mas.ca.com/][mas.ca.com]
 
 # Getting Started Quick Start Guide - MAC and Linux
 
@@ -98,3 +98,17 @@ export MAS_HOSTNAME="my-mas.example.com"
 |MAS_HOSTNAME|mas|The hostname for MAS.|
 |ADD_TEST_DATA|true|When set to **true**, test apps, users and groups are added to the database.|
 |IMAGE_TAG|latest|The image tag used.|
+
+## License
+
+Copyright (c) 2016 CA. All rights reserved.
+
+This software may be modified and distributed under the terms
+of the MIT license. See the [LICENSE][license-link] file for details.
+
+ [mag]: https://docops.ca.com/mag
+ [mas.ca.com]: http://mas.ca.com/
+ [docs]: http://mas.ca.com/docs/
+ [blog]: http://mas.ca.com/blog/
+
+ [license-link]: /LICENSE
