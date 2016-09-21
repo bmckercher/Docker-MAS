@@ -96,7 +96,8 @@ export MAS_HOSTNAME="my-mas.example.com"
 |Environment Variable|Default Value|Description|
 |---|---|---|
 |MAS_HOSTNAME|mas|The hostname for MAS.|
-|ADD_TEST_DATA|true|When set to **true**, test apps, users and groups are added to the database.|
+|ADD_TEST_CLIENTS|false|Setting this to **true**, test apps are added to the database.|
+|ADD_TEST_USERS_GROUPS|true|Setting this to **true**, users and groups are added to the database.|
 |IMAGE_TAG|latest|The image tag used.|
 
 ## License
