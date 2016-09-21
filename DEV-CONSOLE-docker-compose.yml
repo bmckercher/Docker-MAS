@@ -10,3 +10,5 @@ services:
     image: caapimcollab/mobile-developer-console
     ports:
       - 443:443
+    environment:
+      - MAS_HOSTNAME
