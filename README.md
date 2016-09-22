@@ -151,7 +151,7 @@ There are two possible solutions:
     > However, rooting the device to modify the hosts file is required.
 
 
-## License
+# License
 
 The docker Mobile App Services image contains a license that will expire on January 7th, 2017. After this date this image will no longer be usable.
 
