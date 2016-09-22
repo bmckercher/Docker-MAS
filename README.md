@@ -14,7 +14,7 @@ For more information, see [http://mas.ca.com/][mas.ca.com]
 
 CA Mobile API Gateway (MAG) provides enterprises with a secure mobile backend that integrates systems and allows control over which users, devices and applications can access your APIs. The gateway enables developers to leverage standards for API security such as (OAuth2, OpenID Connect, PKI) through client SDKs for Android, iOS and Apache Cordova.
 
-For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag/)
+For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag)
 
 
 # Getting Started Quick Start Guide - MAC and Linux
