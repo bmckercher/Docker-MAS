@@ -16,41 +16,41 @@ You can find more information about these at [http://mas.ca.com/][mas.ca.com]
 
 # Getting Started Quick Start Guide - MAC and Linux
 
-  Prerequisites:
-> * Install Docker: [https://www.docker.com](https://www.docker.com/)
+Prerequisites:
+ * Install Docker: [https://www.docker.com](https://www.docker.com/)
 
 1) Run `./MAS-start`
- > * This will start CA Mobile App Services, MySQL, and Mosquitto Broker.
+   * This will start CA Mobile App Services, MySQL, and Mosquitto Broker.
 
 2) Update your hosts file and add `127.0.0.1 mas` 
- > * On a MAC or Linux machine the hosts file is /etc/hosts
+   * On a MAC or Linux machine the hosts file is /etc/hosts
    * Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Networking](#networking) for more info.
 
 3) Start creating. You can login using the *'admin'* user with password *'password'*
- > * https://mas:8443/oauth/manager
+   * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
    * https://mas (Developer Console)
    
 # Getting Started Quick Start Guide - Windows
 
-  Prerequisites:
-> * Install Docker: [https://www.docker.com](https://www.docker.com/)
+Prerequisites:
+  * Install Docker: [https://www.docker.com](https://www.docker.com/)
   * If you are using version below Windows 10, install Cygwin: (https://www.cygwin.com/)
 
 1) Run `attrib +R .\sql\config\my.cnf`
- > * This will set my.cnf to read-only. MySql will ignore this file if it is World-Wide Writable.
+   * This will set my.cnf to read-only. MySql will ignore this file if it is World-Wide Writable.
     
 2) Make sure your docker directory is inside virtual machine share folders or be marked as one. 
 
 3) Run `bash .\MAS-start`
- > * This will start CA Mobile App Services, MySQL, and Mosquitto Broker.
+   * This will start CA Mobile App Services, MySQL, and Mosquitto Broker.
 
 4) Update your hosts file and add `127.0.0.1 mas` 
- > * On Windows it is c:\windows\System32\drivers\etc\hosts
+   * On Windows it is c:\windows\System32\drivers\etc\hosts
    * Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Networking](#networking) for more info.
 
 5) Start creating. You can login using the *'admin'* user with password *'password'*
- > * https://mas:8443/oauth/manager
+   * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
    * https://mas (Developer Console)
 
@@ -128,6 +128,27 @@ The following groups are also created:
 |Engineering|adiaz, bwhite, trichards|
 |Legal|cgriffin, vpeters, asteeves|
 |Company X|adiaz, bwhite, cgriffin, grice, hjones, jtorres, trichards, vpeters, zshelton, arose, asteeves|
+
+# Troubleshooting
+This section contains some common issues and problems.
+
+## I am not able to start the Android Emulator
+### Issue
+Once I started docker, I am not able to start Android Emulator, this is a known issue:
+
+> emulator: ERROR: Unfortunately, there's an incompatibility between HAXM hypervisor and VirtualBox 4.3.30+ which doesn't allow multiple hypervisors to co-exist.  It is being actively worked on; you can find out more about the issue at [http://b.android.com/197915](http://b.android.com/197915) (Android) and [https://www.virtualbox.org/ticket/14294](https://www.virtualbox.org/ticket/14294) (VirtualBox)
+> 
+> Failed to sync vcpu reg
+> 
+> Internal error: initial hax sync failed
+
+### Solution
+There are two possible solutions:
+
+- Run another image of the emulator which is built with arm instead of x86.
+    > However, running arm has major performance degrade, it takes a while to deploy the App.
+- Use a real device for development
+    > However, rooting the device to modify the hosts file is required.
 
 
 ## License
