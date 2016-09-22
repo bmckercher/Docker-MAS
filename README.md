@@ -153,10 +153,9 @@ There are two possible solutions:
 
 ## License
 
-Copyright (c) 2016 CA. All rights reserved.
+The docker Mobile App Services image contains a license that will expire on January 7th, 2017. After this date this image will no longer be usable.
 
-This software may be modified and distributed under the terms
-of the MIT license. See the [LICENSE][license-link] file for details.
+See the [LICENSE][license-link] file for details.
 
  [mag]: https://docops.ca.com/mag
  [mas.ca.com]: http://mas.ca.com/
