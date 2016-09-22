@@ -9,7 +9,12 @@
 
 . MAS-vars && . MAG-vars && . OTK-vars
 
-compose_files=( MAS-docker-compose.yml MAS-links-docker-compose.yml MYSQL-docker-compose.yml MOSQUITTO-docker-compose.yml DEV-CONSOLE-docker-compose.yml )
+compose_files=( MAS-docker-compose.yml MAS-links-docker-compose.yml MYSQL-docker-compose.yml DEV-CONSOLE-docker-compose.yml )
+
+if [[ $MAS_MESSAGING_ENABLED == 'true' ]]; then
+    compose_files+=( MAS-Messaging-links-docker-compose.yml MOSQUITTO-docker-compose.yml )
+fi
+
 args=""
 for i in "${compose_files[@]}"
 do

@@ -8,4 +8,4 @@ version: '2'
 services:
   mas:
     links:
-      - mysqldb
+      - mosquitto
