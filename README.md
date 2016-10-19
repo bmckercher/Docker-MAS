@@ -29,8 +29,6 @@ The docker Mobile App Services image contains a license that expires on January 
 See the [LICENSE][license-link] file for details.
 
 
-
-
 ## About MAS and MAG
 **CA Mobile App Services (MAS)** is a set of tightly integrated mobile services that help enterprise developers quickly create secure mobile and IoT apps. Currently available MAS services are Messaging, User and Group Management, and Storage. We provide industry-leading secure infrastructure for app development. You get to focus on app design. 
 
@@ -39,8 +37,6 @@ For more information, see [http://mas.ca.com/][mas.ca.com]
 **CA Mobile API Gateway (MAG)** provides enterprises with a secure mobile backend that integrates systems and allows control over which users, devices and applications can access your APIs. The gateway enables developers to leverage standards for API security such as (OAuth2, OpenID Connect, PKI) through client SDKs for Android, iOS and Apache Cordova.
 
 For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag)
-
-
 
 
 ## Getting Started  
@@ -214,9 +210,8 @@ Rooting the device to modify the hosts file is required.
 
 ## Additional Documentation
 
- [mag]: https://docops.ca.com/mag
- [mas.ca.com]: http://mas.ca.com/
- [docs]: http://mas.ca.com/docs/
- [blog]: http://mas.ca.com/blog/
+ [Mobile App Services wiki](https://docops.ca.com/mas)   
+ [MAS Developers site (mas.ca.com)](http://mas.ca.com/)    
+ [MAS blog (mas.ca.com)](http://mas.ca.com/blog/)  
 
  [license-link]: /LICENSE
