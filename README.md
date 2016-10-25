@@ -186,7 +186,9 @@ The following groups are also created:
 |Company X|adiaz, bwhite, cgriffin, grice, hjones, jtorres, trichards, vpeters, zshelton, arose, asteeves|
 
 ## Troubleshooting
-This section contains some common issues and problems.
+
+If you have installation problems, implementation questions, or enhancement requests, create an issue in Git.  
+           
 
 ### Cannot start the Android Emulator
 This is a known issue:
