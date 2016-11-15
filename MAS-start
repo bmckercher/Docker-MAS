@@ -9,6 +9,12 @@
 
 . MAS-vars && . MAG-vars && . OTK-vars
 
+HOSTNAME_ENCODED=$(echo -n "$BUNDLE_TEMPLATE_HOSTNAME" | base64)
+PROTOCOL_HOSTNAME_ENCODED=$(echo -n "http://$BUNDLE_TEMPLATE_HOSTNAME" | base64)
+
+export BUNDLE_TEMPLATE_HOSTNAME_ENCODED="${HOSTNAME_ENCODED}"
+export BUNDLE_TEMPLATE_PROTOCOL_HOSTNAME_ENCODED="${PROTOCOL_HOSTNAME_ENCODED}"
+
 compose_files=( MAS-docker-compose.yml MAS-links-docker-compose.yml MYSQL-docker-compose.yml DEV-CONSOLE-docker-compose.yml )
 
 if [[ $MAS_MESSAGING_ENABLED == 'true' ]]; then
