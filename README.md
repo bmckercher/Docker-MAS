@@ -40,11 +40,23 @@ For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag)
 
 
 ## Getting Started  
-Let's go!
+
+Let's go! 
+
+### Install Docker ###
+If you haven't already, you must install Docker: [https://www.docker.com](https://www.docker.com/)
  
+### Clone the Docker-MAS Repository
+
+To create a local copy of the Docker-MAS repo: 
+
+1. Make a local directory to store your repo. 
+2. `cd` into the directory and run:
+   `git clone https://github.com/CAAPIM/Docker-MAS.git`   
+
+
 ### Installing on MAC or Linux 
 
-Prerequisite: Install Docker: [https://www.docker.com](https://www.docker.com/)
 
 1) Run `./MAS-start`
 
@@ -53,7 +65,7 @@ Prerequisite: Install Docker: [https://www.docker.com](https://www.docker.com/)
 2) Update your hosts file and add `127.0.0.1 mas`
 
    On a MAC or Linux machine the hosts file is /etc/hosts
-  > Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
+  > Note: If you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
 
 3) Start creating apps. Login using the *'admin'* user with password *'password'*
 
@@ -63,10 +75,7 @@ Prerequisite: Install Docker: [https://www.docker.com](https://www.docker.com/)
    
 ### Installing on Windows
 
-Prerequisites:
-
-  * Install Docker: [https://www.docker.com](https://www.docker.com/)
-  * If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
+> Note: If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
  
 
 1) Run `attrib +R .\sql\config\my.cnf`
