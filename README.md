@@ -44,7 +44,11 @@ For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag)
 Let's go! 
 
 ### Install Docker ###
-If you haven't already, you must install Docker: [https://www.docker.com](https://www.docker.com/)
+If you haven't already, you must install Docker:
+1) Go to [https://www.docker.com](https://www.docker.com/)
+2) Click "Get Started with Docker"
+3) Download the Docker version that corresponds to your platform. Follow the Get Started Tutorial examples on the Docker site. 
+
  
 ### Clone the Docker-MAS Repository
 
@@ -72,7 +76,7 @@ To create a local copy of the Docker-MAS repo:
    * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
    * https://mas (Developer Console)
-   
+   do
 ### Installing on Windows
 
 > Note: If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
