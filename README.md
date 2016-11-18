@@ -64,7 +64,7 @@ To create a local copy of the Docker-MAS repo:
 
 1) Run `./MAS-start`
 
-   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  
+   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
 
 2) Update your hosts file and add `127.0.0.1 mas`
 
@@ -76,7 +76,7 @@ To create a local copy of the Docker-MAS repo:
    * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
    * https://mas (Developer Console)
-   do
+   
 ### Installing on Windows
 
 > Note: If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
@@ -90,7 +90,7 @@ To create a local copy of the Docker-MAS repo:
 
 3) Run `bash .\MAS-start`
 
-   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.
+   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
 
 4) Update your hosts file and add `127.0.0.1 mas`
 
@@ -202,9 +202,23 @@ The following groups are also created:
 
 If you have installation problems, implementation questions, or enhancement requests, create an issue in Git.  
            
+### Cannot Start MAS due to Existing Port Allocation
+When you run ./MAS start, ports 443, 8080, and 8443 must be available, otherwise the service fails to start.
+
+```ERROR: for mas  Cannot start service mas: driver failed programming external connectivity on endpoint dockermas_mas_1 (...0b43...): Bind for 0.0.0.0:8080 failed: port is already allocated```
+
+Check to see if you have other images of Docker running, then free up those ports:
+`docker ps`
+Stope any running images:
+`docker kill <containerID>`
+
+Alternatively, specify a different unused port in the OTK-docker-compose file.
+For example: `8081:8080`
+where 8081 is the external port to expose on your machine, and 8080 is the corresponding internal port.
+
+
 
 ### Cannot start the Android Emulator
-This is a known issue:
 
 There is an incompatibility between HAXM hypervisor and VirtualBox 4.3.30+ which does not allow multiple hypervisors to co-exist.  It is being actively worked on; you can find out more about the issue at [http://b.android.com/197915](http://b.android.com/197915) (Android) and [https://www.virtualbox.org/ticket/14294](https://www.virtualbox.org/ticket/14294) (VirtualBox)
  
