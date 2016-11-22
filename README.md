@@ -40,20 +40,36 @@ For more information, see [http://docops.ca.com/mag](https://docops.ca.com/mag)
 
 
 ## Getting Started  
-Let's go!
+
+Let's go! 
+
+### Install Docker ###
+If you haven't already, you must install Docker:
+1) Go to [https://www.docker.com](https://www.docker.com/)
+2) Click "Get Started with Docker"
+3) Download the Docker version that corresponds to your platform. Follow the Get Started Tutorial examples on the Docker site. 
+
  
+### Clone the Docker-MAS Repository
+
+To create a local copy of the Docker-MAS repo: 
+
+1. Make a local directory to store your repo. 
+2. `cd` into the directory and run:
+   `git clone https://github.com/CAAPIM/Docker-MAS.git`   
+
+
 ### Installing on MAC or Linux 
 
-Prerequisite: Install Docker: [https://www.docker.com](https://www.docker.com/)
 
 1) Run `./MAS-start`
 
-   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  
+   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
 
 2) Update your hosts file and add `127.0.0.1 mas`
 
    On a MAC or Linux machine the hosts file is /etc/hosts
-  > Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
+  > Note: If you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
 
 3) Start creating apps. Login using the *'admin'* user with password *'password'*
 
@@ -63,10 +79,7 @@ Prerequisite: Install Docker: [https://www.docker.com](https://www.docker.com/)
    
 ### Installing on Windows
 
-Prerequisites:
-
-  * Install Docker: [https://www.docker.com](https://www.docker.com/)
-  * If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
+> Note: If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
  
 
 1) Run `attrib +R .\sql\config\my.cnf`
@@ -77,7 +90,7 @@ Prerequisites:
 
 3) Run `bash .\MAS-start`
 
-   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.
+   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
 
 4) Update your hosts file and add `127.0.0.1 mas`
 
@@ -189,9 +202,23 @@ The following groups are also created:
 
 If you have installation problems, implementation questions, or enhancement requests, create an issue in Git.  
            
+### Cannot Start MAS due to Existing Port Allocation
+When you run ./MAS start, ports 443, 8080, and 8443 must be available, otherwise the service fails to start.
+
+```ERROR: for mas  Cannot start service mas: driver failed programming external connectivity on endpoint dockermas_mas_1 (...0b43...): Bind for 0.0.0.0:8080 failed: port is already allocated```
+
+Check to see if you have other images of Docker running, then free up those ports:
+`docker ps`
+Stope any running images:
+`docker kill <containerID>`
+
+Alternatively, specify a different unused port in the OTK-docker-compose file.
+For example: `8081:8080`
+where 8081 is the external port to expose on your machine, and 8080 is the corresponding internal port.
+
+
 
 ### Cannot start the Android Emulator
-This is a known issue:
 
 There is an incompatibility between HAXM hypervisor and VirtualBox 4.3.30+ which does not allow multiple hypervisors to co-exist.  It is being actively worked on; you can find out more about the issue at [http://b.android.com/197915](http://b.android.com/197915) (Android) and [https://www.virtualbox.org/ticket/14294](https://www.virtualbox.org/ticket/14294) (VirtualBox)
  
