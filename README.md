@@ -52,12 +52,14 @@ If you haven't already, you must install Docker:
  
 ### Clone the Docker-MAS Repository
 
+
 To create a local copy of the Docker-MAS repo: 
 
 1. Make a local directory to store your repo. 
 2. `cd` into the directory and run:
-   `git clone https://github.com/CAAPIM/Docker-MAS.git`   
+   `git clone https://github.com/CAAPIM/Docker-MAS.git` 
 
+The master branch is checked out. The master branch is the only stable branch. As such, be sure to use only the master branch for your MAS deployment. Other branches may be unstable, fail to install, or lack updated functionality.
 
 ### Installing on MAC or Linux 
 
