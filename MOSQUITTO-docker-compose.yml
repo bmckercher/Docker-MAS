@@ -7,6 +7,6 @@
 version: '2'
 services:
   mosquitto:
-      image: "caapimcollab/mosquitto-broker"
+      image: eclipse-mosquitto
       expose:
         - "1883"
