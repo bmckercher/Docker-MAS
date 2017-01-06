@@ -11,7 +11,7 @@ By default it brings up the following containers:
   * CA Mobile App Services ([caapimcollab/mobile-app-services](https://hub.docker.com/r/caapimcollab/mobile-app-services/))
   * CA Mobile App Services Dev Console ([caapimcollab/mobile-app-services-dev-console](https://hub.docker.com/r/caapimcollab/mobile-app-services-dev-console/))
   * MySQL ([mysql:5.5](https://hub.docker.com/_/mysql/))
-  * Moquitto MQTT Broker ([caapimcollab/mosquitto](https://hub.docker.com/r/caapimcollab/mosquitto-broker/))
+  * Moquitto MQTT Broker ([eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto/))
 
 ### What's Missing?
 The trial version has the following notable limitations:
@@ -24,7 +24,7 @@ The trial version has the following notable limitations:
 
 ### Limited License
 
-The docker Mobile App Services image contains a license that expires on January 7th, 2017. After this date this image will no longer be usable.
+The docker Mobile App Services image contains a license that expires on April 18th, 2017. After this date this image will no longer be usable.
 
 See the [LICENSE][license-link] file for details.
 
@@ -73,7 +73,7 @@ The master branch is checked out. The master branch is the only stable branch. A
    On a MAC or Linux machine the hosts file is /etc/hosts
   > Note: If you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
 
-3) Start creating apps. Login using the *'admin'* user with password *'password'*
+3) Start creating apps. Login using one of the users from [below](#users)
 
    * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
@@ -99,7 +99,7 @@ The master branch is checked out. The master branch is the only stable branch. A
 On Windows, the hosts file is located at c:\windows\System32\drivers\etc\hosts
    > Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine.
 
-5) Start creating apps. Login using the *'admin'* user with password *'password'*
+5) Start creating apps. Login using one of the users from [below](#users)
 
    * https://mas:8443/oauth/manager
    * https://mas:8443/mag/manager
@@ -130,7 +130,7 @@ The location of the hosts files depends on your OS. On a Windows machine with UA
 
 Now that both the hostname and the IP of the running docker instance are obtained, add this entry to the host file. For example: `127.0.0.1 mas`
 
-Once the hosts file has been edited, open your browser and access the Developer Console.  The username and password to log in are 'admin/password'.
+Once the hosts file has been edited, open your browser and access the Developer Console.
 
 
 
@@ -161,21 +161,10 @@ export MAS_HOSTNAME="my-mas.example.com"
 ./MAS-start
 ```
 
-#### Add Test Users and Groups
+<a name="users"></a>
+#### Test Users and Groups
 
-By default, a single user exists with the following credentials:
-
-- username: **admin**
-- password: **password**
-
-To populate the MAS database with pregenerated users and groups:
-
-```
-export ADD_TEST_USERS_GROUPS="true"
-./MAS-start
-```
-
-The following users and groups are added:
+The following users are available:
 
 |User Name|Login|Password|
 |---|---|---|
