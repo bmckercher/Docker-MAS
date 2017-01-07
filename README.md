@@ -61,16 +61,16 @@ To create a local copy of the Docker-MAS repo:
 
 The master branch is checked out. The master branch is the only stable branch. As such, be sure to use only the master branch for your MAS deployment. Other branches may be unstable, fail to install, or lack updated functionality.
 
-### Installing on MAC or Linux 
+### Running the Images
 
 
-1) Run `./MAS-start`
+1) Open a terminal and type `docker-compose up`
 
    This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
 
 2) Update your hosts file and add `127.0.0.1 mas`
 
-   On a MAC or Linux machine the hosts file is /etc/hosts
+   On a MAC or Linux machine the hosts file is `/etc/hosts`. On Windows, the hosts file is located at `C:\windows\System32\drivers\etc\hosts`
   > Note: If you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine. See [Getting the IP Address of the Docker Instance](#GetIP) for more info.
 
 3) Start creating apps. Login using one of the users from [below](#users)
@@ -79,32 +79,6 @@ The master branch is checked out. The master branch is the only stable branch. A
    * https://mas:8443/mag/manager
    * https://mas (Developer Console)
    
-### Installing on Windows
-
-> Note: If you are using a Windows version below Windows 10, install Cygwin: (https://www.cygwin.com/)
- 
-
-1) Run `attrib +R .\sql\config\my.cnf`
-
-   This command sets my.cnf to read-only, which allows MySql to access this file.
-    
-2) Make sure your Docker directory is either inside a virtual machine share folder or marked as one. 
-
-3) Run `bash .\MAS-start`
-
-   This starts CA Mobile App Services, MySQL, and Mosquitto Broker.  Ports 443, 8080, and 8443 must be available. See Troubleshooting.
-
-4) Update your hosts file and add `127.0.0.1 mas`
-
-On Windows, the hosts file is located at c:\windows\System32\drivers\etc\hosts
-   > Note if you are using Windows 7 or non-beta version of docker in MAC you will need to run `docker-machine ip` to get the ip address of the docker machine.
-
-5) Start creating apps. Login using one of the users from [below](#users)
-
-   * https://mas:8443/oauth/manager
-   * https://mas:8443/mag/manager
-   * https://mas (Developer Console)
-
 
 ## Notes, Tips, and Tricks
 
@@ -141,24 +115,28 @@ To remove the database volume run:  `docker volume rm dockermobile_mysql-data`
 
 
 ### Edit and Export MAS Environment Variables 
-Customize your MAS installation by exporting one or more environment variables before running *MAS-start*. 
+Customize your MAS installation by exporting one or more environment variables before starting the images. 
 
 Environment variables are shown in the following table. 
 
 |Environment Variable|Default Value|Description|
 |---|---|---|
-|MAS_HOSTNAME|mas|The hostname for MAS.|
 |ADD_TEST_CLIENTS|false|If **true**, test apps are added to the database.|
 |ADD_TEST_USERS_GROUPS|true|If **true**, test users and groups are added to the database.|
-|IMAGE_TAG|latest|The image tag used.|
 
-####Create a Custom Hostname
+#### Use a Custom Hostname
 
 By default, the hostname is **mas**. The following command starts MAS with the custom hostname "my-mas.example.com":
 
 ```
 export MAS_HOSTNAME="my-mas.example.com"
-./MAS-start
+export BUNDLE_TEMPLATE_HOSTNAME=${MAS_HOSTNAME}
+export BUNDLE_TEMPLATE_OTK_HOSTNAME=${MAS_HOSTNAME}
+#The base64 encoded version of $MAS_HOSTNAME
+export BUNDLE_TEMPLATE_HOSTNAME_ENCODED=`echo -n ${MAS_HOSTNAME} | base64`
+#This is the base64 encoded version of http://$MAS_HOSTNAME
+export BUNDLE_TEMPLATE_PROTOCOL_HOSTNAME_ENCODED=`echo -n http://${MAS_HOSTNAME} | base64`
+docker-compose up
 ```
 
 <a name="users"></a>

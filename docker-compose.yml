@@ -6,22 +6,61 @@
 #
 version: '2'
 services:
-  mas:
-    extends:
-      file: MAG-docker-compose.yml
-      service: mag
-    image: ${IMAGE}
+  developer-console:
+    image: caapimcollab/mobile-developer-console
     ports:
-      - "8883:8883"
-    hostname: ${MAS_HOSTNAME}
+      - 443:443
     environment:
-      - MAS_STORAGE_ENABLED
-      - MAS_MESSAGING_ENABLED
-      - MAS_IDENTITY_ENABLED
-      - DEV_CONSOLE_ENABLED
+      - MAS_HOSTNAME
+  mosquitto:
+      image: eclipse-mosquitto
+      expose:
+        - "1883"
+  mysqldb:
+    image: mysql:5.5
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=db_admin
+      - MYSQL_PASSWORD
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql/scripts/startup/:/docker-entrypoint-initdb.d/
+      - ./sql/config/my.cnf:/etc/mysql/conf.d/my.cnf
+    expose:
+      - "3306"
+  mas:
+    image: caapimcollab/mobile-app-services:1.3.00-beta
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+      - "8883:8883"
+    hostname: ${BUNDLE_TEMPLATE_HOSTNAME}
+    links:
+      - mysqldb
+      - mosquitto
+    environment:
+      - SSG_CLUSTER_PASSWORD
+      - SSG_DATABASE_TYPE
+      - SSG_DATABASE_DERBY_IN_MEMORY
+      - SSG_JVM_HEAP
       - BUNDLE_TEMPLATE_HOSTNAME
+      - BUNDLE_TEMPLATE_OTK_HOSTNAME
       - BUNDLE_TEMPLATE_HOSTNAME_ENCODED
       - BUNDLE_TEMPLATE_PROTOCOL_HOSTNAME_ENCODED
+      - BUNDLE_TEMPLATE_OTK_DATABASE_HOST
+      - BUNDLE_TEMPLATE_OTK_DATABASE_PORT
+      - BUNDLE_TEMPLATE_OTK_DATABASE_USER
+      - BUNDLE_TEMPLATE_OTK_DATABASE_PASSWORD
+      - BUNDLE_TEMPLATE_OTK_DATABASE_NAME
+      - BUNDLE_TEMPLATE_OTK_DATABASE_TYPE
+      - BUNDLE_TEMPLATE_OTK_DATABASE_MYSQL_ENABLED
+      - BUNDLE_TEMPLATE_MAG_DATABASE_HOST
+      - BUNDLE_TEMPLATE_MAG_DATABASE_PORT
+      - BUNDLE_TEMPLATE_MAG_DATABASE_USER
+      - BUNDLE_TEMPLATE_MAG_DATABASE_PASSWORD
+      - BUNDLE_TEMPLATE_MAG_DATABASE_NAME
+      - BUNDLE_TEMPLATE_MAG_DATABASE_TYPE
+      - BUNDLE_TEMPLATE_MAG_DATABASE_MYSQL_ENABLED
       - BUNDLE_TEMPLATE_IDENTITY_DATABASE_HOST
       - BUNDLE_TEMPLATE_IDENTITY_DATABASE_PORT
       - BUNDLE_TEMPLATE_IDENTITY_DATABASE_USER
@@ -46,3 +85,6 @@ services:
       - BUNDLE_TEMPLATE_DEV_CONSOLE_DATABASE_TYPE
       - BUNDLE_TEMPLATE_DEV_CONSOLE_DATABASE_MYSQL_ENABLED
       - ADD_TEST_USERS_GROUPS
+      - ADD_TEST_CLIENTS
+volumes:
+  mysql-data:
