@@ -171,6 +171,25 @@ The following groups are also created:
 
 If you have installation problems, implementation questions, or enhancement requests, create an issue in Git.  
            
+### Cannot Start MAS When Using a Custom Hostname
+
+Any of the following errors indicates that you have changed the hostname in the database since the last installation. Currently, MAS does not support changing hostnames in the existing database:
+
+- ERROR - liquibase-otk-db.sh: Failed to create or update the OAuth Client for the Developer Console! dockermas_mas_1 exited with code 1
+- ERROR - Failed to create or update the otk_db database on mysqldb dockermas_mas_1 exited with code 1
+- Error - [-34018] Security error has occurred:
+
+To allow the new hostname, follow these steps:
+
+1. Run these commands to delete the old volume and hostname:
+
+ docker-compose rm  
+ docker volume rm <volume name>    
+ **Sample volume**: dockermas_mysql-data    
+2. Get the latest compose script (git pull or complete clone), and restart the docker image:
+
+ docker-compose up      
+
 ### Cannot Start MAS due to Existing Port Allocation
 When you run ./MAS start, ports 443, 8080, and 8443 must be available, otherwise the service fails to start.
 
@@ -184,8 +203,6 @@ Stope any running images:
 Alternatively, specify a different unused port in the OTK-docker-compose file.
 For example: `8081:8080`
 where 8081 is the external port to expose on your machine, and 8080 is the corresponding internal port.
-
-
 
 ### Cannot start the Android Emulator
 
@@ -203,8 +220,6 @@ Do one of the following:
 However, running arm results in a major performance degrade, it takes a while to deploy the app.
 * Use a real device for development.  
 Rooting the device to modify the hosts file is required.
-
-
 
 ## Additional Documentation
 
