@@ -175,20 +175,20 @@ If you have installation problems, implementation questions, or enhancement requ
 
 Any of the following errors indicates that you have changed the hostname in the database since the last installation. Currently, MAS does not support changing hostnames in the existing database:
 
-- ERROR - liquibase-otk-db.sh: Failed to create or update the OAuth Client for the Developer Console! dockermas_mas_1 exited with code 1
-- ERROR - Failed to create or update the otk_db database on mysqldb dockermas_mas_1 exited with code 1
-- Error - [-34018] Security error has occurred:
+- `ERROR - liquibase-otk-db.sh: Failed to create or update the OAuth Client for the Developer Console! dockermas_mas_1 exited with code 1`
+- `ERROR - Failed to create or update the otk_db database on mysqldb dockermas_mas_1 exited with code 1`
+- `Error - [-34018] Security error has occurred:`
 
 To allow the new hostname, follow these steps:
 
 1. Run these commands to delete the old volume and hostname:
 
- docker-compose rm  
- docker volume rm <volume name>    
+ `docker-compose rm`  
+ `docker volume rm <volume name>`    
  **Sample volume**: dockermas_mysql-data    
 2. Get the latest compose script (git pull or complete clone), and restart the docker image:
 
- docker-compose up      
+ `docker-compose up`      
 
 ### Cannot Start MAS due to Existing Port Allocation
 When you run ./MAS start, ports 443, 8080, and 8443 must be available, otherwise the service fails to start.
