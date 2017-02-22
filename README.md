@@ -197,7 +197,7 @@ When you run ./MAS start, ports 443, 8080, and 8443 must be available, otherwise
 
 Check to see if you have other images of Docker running, then free up those ports:
 `docker ps`
-Stope any running images:
+Stop any running images:
 `docker kill <containerID>`
 
 Alternatively, specify a different unused port in the OTK-docker-compose file.
