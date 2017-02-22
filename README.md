@@ -184,8 +184,11 @@ To allow the new hostname, follow these steps:
 1. Run these commands to delete the old volume and hostname:
 
  `docker-compose rm`  
- `docker volume rm <volume name>`    
- **Sample volume**: dockermas_mysql-data    
+ `docker volume rm <volume name>` 
+ 
+ **Important!** Removing the volume removes your existing applications and data.
+
+ **Example**: `docker volume rm dockermas_mysql-data`    
 2. Get the latest compose script (git pull or complete clone), and restart the docker image:
 
  `docker-compose up`      
